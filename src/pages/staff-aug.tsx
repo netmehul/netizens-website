@@ -23,10 +23,10 @@ import { BlogInsights } from '../components/BlogInsights';
 
 const StaffAug: React.FC = () => {
     useEffect(() => {
-        document.title = "Staff Augmentation | Scale Your Team On Demand";
+        document.title = "Staff Augmentation Company | Dedicated Developers";
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-            metaDescription.setAttribute("content", "Add vetted engineers to your team in days, not months. Flexible staff augmentation for startups and scaling teams.");
+            metaDescription.setAttribute("content", "Netizens provides on-demand engineering capacity: dedicated developers, team extension, pods, and a 2-week trial so you can ship faster with confidence.");
         }
     }, []);
 

@@ -26,10 +26,10 @@ import iconCICD from '../assets/images/software-maintanance-devops/continue-deli
 
 const SupportScale: React.FC = () => {
     useEffect(() => {
-        document.title = "Support & Scale | Reliable Post-Launch Engineering";
+        document.title = "Post-Launch Support & DevOps for Scaling Products | Netizens";
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-            metaDescription.setAttribute("content", "Post-launch engineering that keeps releases clean, systems stable, and teams unblocked. Ongoing support and scaling for production products.");
+            metaDescription.setAttribute("content", "Structured support retainers for production apps: SLAs, DevOps monitoring, performance optimization, security hardening, and continuous delivery improvements.");
         }
     }, []);
 
