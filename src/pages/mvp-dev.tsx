@@ -91,7 +91,14 @@ const MvpDev: React.FC = () => {
                 />
                 <SeparatorPattern />
                 <Testimonials />
-                <FAQChat />
+                <FAQChat faqs={[
+                    { question: "Do you work with early-stage startups?", answer: "Yes. We work with early-stage founders, bootstrapped teams, and funded startups. What matters most is having a real problem to solve and a clear goal for the MVP." },
+                    { question: "Can we start small before committing long-term?", answer: "Absolutely. We offer scoped discovery sprints and small initial engagements so you can evaluate our work before scaling up the collaboration." },
+                    { question: "How long does MVP development usually take?", answer: "Most MVPs take 6–12 weeks depending on complexity. We define scope tightly upfront so there are no surprises, and we ship iteratively throughout." },
+                    { question: "Do you help decide what features go into the MVP?", answer: "Yes — that's one of the most valuable things we do. We run a structured scoping session to cut the fluff and identify the smallest set of features that validates your core hypothesis." },
+                    { question: "Do you handle both design and development?", answer: "Yes. We handle UI/UX design, frontend, backend, and infrastructure. You get a single accountable team end to end." },
+                    { question: "What happens after the MVP is launched?", answer: "We help you interpret early user feedback, prioritize the next iteration, and continue development. We can also hand off cleanly if you bring development in-house." },
+                ]} />
                 <BlogInsights />
                 <SeparatorPattern />
                 <ServiceCTASection

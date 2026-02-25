@@ -2,38 +2,14 @@ import { useState, useEffect, useCallback } from 'react';
 import imgSeparatorPattern from '../assets/images/pattern.png';
 import favIcon from '../assets/favicon/fav.png';
 
-const faqs = [
-    {
-        question: 'Do you work with early-stage startups?',
-        answer:
-            'Yes. We work with early-stage founders, bootstrapped teams, and funded startups. What matters most is having a real problem to solve and a clear goal for the MVP.',
-    },
-    {
-        question: 'Can we start small before committing long-term?',
-        answer:
-            'Absolutely. We offer scoped discovery sprints and small initial engagements so you can evaluate our work before scaling up the collaboration.',
-    },
-    {
-        question: 'How long does MVP development usually take?',
-        answer:
-            'Most MVPs take 6–12 weeks depending on complexity. We define scope tightly upfront so there are no surprises, and we ship iteratively throughout.',
-    },
-    {
-        question: 'Do you help decide what features go into the MVP?',
-        answer:
-            `Yes — that's one of the most valuable things we do. We run a structured scoping session to cut the fluff and identify the smallest set of features that validates your core hypothesis.`,
-    },
-    {
-        question: 'Do you handle both design and development?',
-        answer:
-            'Yes. We handle UI/UX design, frontend, backend, and infrastructure. You get a single accountable team end to end.',
-    },
-    {
-        question: 'What happens after the MVP is launched?',
-        answer:
-            'We help you interpret early user feedback, prioritize the next iteration, and continue development. We can also hand off cleanly if you bring development in-house.',
-    },
-];
+export interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface FAQChatProps {
+    faqs: FAQItem[];
+}
 
 // Agent avatar using real favicon
 const AgentAvatar = () => (
@@ -98,8 +74,8 @@ const TypingIndicator = () => (
 );
 
 // Individual FAQ item with inline typing
-function FAQItem({ faq, index, isActive, onToggle }: {
-    faq: typeof faqs[0];
+function FAQItemRow({ faq, index, isActive, onToggle }: {
+    faq: FAQItem;
     index: number;
     isActive: boolean;
     onToggle: (i: number) => void;
@@ -163,7 +139,7 @@ function FAQItem({ faq, index, isActive, onToggle }: {
     );
 }
 
-export const FAQChat = () => {
+export const FAQChat = ({ faqs }: FAQChatProps) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const handleToggle = (i: number) => {
@@ -172,7 +148,6 @@ export const FAQChat = () => {
 
     return (
         <section className="relative w-full bg-regal-navy flex flex-col items-center py-16 lg:py-20 overflow-hidden">
-            {/* Background — exact same as MVPCTASection */}
             <div className="absolute inset-0 pointer-events-none opacity-10">
                 <div
                     className="absolute inset-0 w-full h-full mix-blend-screen"
@@ -193,7 +168,6 @@ export const FAQChat = () => {
             </div>
 
             <div className="relative z-10 w-full max-w-[1096px] mx-auto px-4 lg:px-0 flex flex-col gap-8 items-center">
-                {/* Header */}
                 <div className="flex flex-col items-center gap-2 text-center">
                     <div className="inline-flex items-center justify-center px-[18px] py-2 rounded-[4px] border border-white/10 bg-white/10">
                         <span className="font-sans text-[12px] text-snow-white">What People Ask</span>
@@ -203,10 +177,7 @@ export const FAQChat = () => {
                     </h2>
                 </div>
 
-                {/* Browser window */}
                 <div className="w-full rounded-[10px] overflow-hidden shadow-[0px_434px_121px_0px_rgba(0,0,0,0),0px_278px_111px_0px_rgba(0,0,0,0.01),0px_156px_94px_0px_rgba(0,0,0,0.03),0px_69px_69px_0px_rgba(0,0,0,0.04),0px_17px_38px_0px_rgba(0,0,0,0.05)]">
-
-                    {/* Window top bar */}
                     <div
                         className="flex items-center gap-[10px] px-[10px] py-[10px] w-full"
                         style={{
@@ -224,11 +195,10 @@ export const FAQChat = () => {
                         <div className="flex-1" />
                     </div>
 
-                    {/* Window content */}
                     <div className="bg-white px-8 md:px-[112px] py-[35px] min-h-[620px]">
                         <div className="flex flex-col gap-[13px] items-end w-full max-w-[872px] mx-auto">
                             {faqs.map((faq, i) => (
-                                <FAQItem
+                                <FAQItemRow
                                     key={i}
                                     faq={faq}
                                     index={i}

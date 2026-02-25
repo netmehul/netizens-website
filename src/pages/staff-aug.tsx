@@ -16,7 +16,10 @@ import iconMobile from '../assets/images/team-roles-section/mobile-dev.svg';
 import iconDevops from '../assets/images/team-roles-section/devops-engine.svg';
 import iconQA from '../assets/images/team-roles-section/qa-engine.svg';
 import iconAI from '../assets/images/team-roles-section/ai-automate-engine.svg';
+import { QualityGuarantee } from '../components/QualityGuarantee';
 import { Testimonials } from '../components/Testimonials';
+import { FAQChat } from '../components/FAQChat';
+import { BlogInsights } from '../components/BlogInsights';
 
 const StaffAug: React.FC = () => {
     useEffect(() => {
@@ -102,7 +105,7 @@ const StaffAug: React.FC = () => {
                         },
                     ]}
                 />
-                <SeparatorPattern />
+                
                 <ServiceScope
                     badge="Your team, plus our engineers"
                     heading="Roles we can add to your team"
@@ -120,11 +123,18 @@ const StaffAug: React.FC = () => {
                     ]}
                     footerText="You get the right roles for your goals, not a fixed bundle."
                 />
+                <QualityGuarantee />
                 <SeparatorPattern />
-                
-                
-                
                 <Testimonials />
+                <FAQChat faqs={[
+                    { question: "How fast can we onboard developers?", answer: "Most teams start in 1–2 weeks. We align on role, stack, time zone overlap, and your sprint cadence, then onboard into your tools and process with clear first-week deliverables." },
+                    { question: "Is this staff augmentation or team extension?", answer: "Both. Whether you need individual engineers to fill gaps or a full pod with a tech lead, we adapt the model to how your team works — not the other way around." },
+                    { question: "Can we try engineers before committing long-term?", answer: "Yes. We offer a paid 2-week trial so you can evaluate quality, velocity, and cultural fit before scaling the engagement." },
+                    { question: "Who manages delivery: us or you?", answer: "Your team stays in control. Our engineers plug into your sprints, tools, and standups. You assign work and set priorities — we deliver." },
+                    { question: "What if an engineer isn't the right fit?", answer: "We replace them quickly with minimal disruption. Fit matters, and we stand behind every engineer we place on your team." },
+                    { question: "How do pricing and engagement models work?", answer: "We offer flexible monthly engagements — full-time, part-time, or pod-based. Pricing depends on role, seniority, and team size. No lock-in contracts." },
+                ]} />
+                <BlogInsights />
                 <SeparatorPattern />
                 <ServiceCTASection
                     heading={<>Scale your team without <br className="hidden sm:block" /> the hiring overhead.</>}
