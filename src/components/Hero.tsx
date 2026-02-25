@@ -14,7 +14,7 @@ export function Hero({
   badge,
   heading,
   description,
-  primaryCta = "Book Discovery Call",
+  primaryCta = "Book a Discovery Call",
   secondaryCta = "How We Work",
   image,
   imageAlt,

@@ -171,7 +171,7 @@ export const WhatYouGet = () => {
           ))}
         </div>
 
-        {/* Book Discovery Call Button */}
+        {/* Book a Discovery Call Button */}
         <div className="mt-6 sm:mt-12 flex justify-center pb-0 sm:pb-4 w-full inset-x-0">
           <Button variant="primary" className="shadow-xl px-8 py-3 text-sm">
             Book a Discovery Call

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SidePattern } from "./SidePattern";
+import { Button } from "./ui/Button";
 
 interface ProcessStep {
     title: string;
@@ -11,9 +12,10 @@ interface ProcessTimelineProps {
     badge: string;
     heading: string;
     steps: ProcessStep[];
+    ctaLabel?: string;
 }
 
-export function ProcessTimeline({ badge, heading, steps }: ProcessTimelineProps) {
+export function ProcessTimeline({ badge, heading, steps, ctaLabel }: ProcessTimelineProps) {
     const [activeIndex, setActiveIndex] = useState(0);
     const sectionRef = useRef<HTMLDivElement>(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -215,6 +217,14 @@ export function ProcessTimeline({ badge, heading, steps }: ProcessTimelineProps)
                         </div>
                     ))}
                 </div>
+
+                {ctaLabel && (
+                    <div className="flex justify-center mt-2">
+                        <Button variant="primary" className="px-8 py-3 text-sm">
+                            {ctaLabel}
+                        </Button>
+                    </div>
+                )}
             </div>
         </section>
     );

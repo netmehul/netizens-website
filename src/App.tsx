@@ -3,6 +3,7 @@ import MvpDev from './pages/mvp-dev';
 import StaffAug from './pages/staff-aug';
 import SupportScale from './pages/support-scale';
 import WorkflowDigit from './pages/workflow-digit';
+import AiAutomate from './pages/ai-automate';
 import Index from './pages/index';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/staff-augmentation" element={<StaffAug />} />
         <Route path="/support-and-scale" element={<SupportScale />} />
         <Route path="/workflow-digitization" element={<WorkflowDigit />} />
+        <Route path="/ai-consulting" element={<AiAutomate />} />
       </Routes>
     </Router>
   );

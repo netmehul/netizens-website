@@ -152,7 +152,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
                   </Link>
 
                   {/* Category 5 */}
-                  <div className="bg-white p-6 hover:bg-gray-50 transition-colors flex flex-col gap-4 group/card">
+                  <Link to="/ai-consulting" className="bg-white p-6 hover:bg-gray-50 transition-colors flex flex-col gap-4 group/card">
                     <h3 className="font-['Geist',sans-serif] text-[16px] text-[#16181b] tracking-[0.8px] uppercase font-medium">
                       AI Consulting & Automation
                     </h3>
@@ -178,7 +178,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
                         <span className="flex-1">AI Automation Sprint</span>
                       </li>
                     </ul>
-                  </div>
+                  </Link>
 
                   {/* CTA 6th Card */}
                   <div className="relative bg-regal-navy flex flex-col items-start justify-center p-8 gap-4 overflow-hidden group cursor-pointer">
@@ -223,7 +223,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
               size="sm"
               className="hidden md:inline-flex text-xs md:text-[14px] px-[18px] py-[10px]"
             >
-              Book Discovery Call
+              Book a Discovery Call
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -259,7 +259,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
               <Link to="/workflow-digitization" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => setIsMobileMenuOpen(false)}>Workflow Digitization</Link>
               <Link to="/support-and-scale" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => setIsMobileMenuOpen(false)}>Support & Scale</Link>
               <Link to="/staff-augmentation" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => setIsMobileMenuOpen(false)}>Staff Augmentation</Link>
-              <div className="px-8 py-3 text-[13px] font-semibold text-regal-navy">AI Consulting & Automation</div>
+              <Link to="/ai-consulting" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => setIsMobileMenuOpen(false)}>AI Consulting & Automation</Link>
             </div>
           )}
 
@@ -279,7 +279,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
 
           <div className="px-6 py-6 mt-2">
             <Button size="sm" className="w-full justify-center py-[14px] text-[15px]">
-              Book Discovery Call
+              Book a Discovery Call
             </Button>
           </div>
         </div>
