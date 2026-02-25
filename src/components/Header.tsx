@@ -102,7 +102,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
                   </div>
 
                   {/* Category 3 */}
-                  <div className="bg-white p-6 hover:bg-gray-50 transition-colors flex flex-col gap-4 group/card">
+                  <Link to="/support-and-scale" className="bg-white p-6 hover:bg-gray-50 transition-colors flex flex-col gap-4 group/card">
                     <h3 className="font-['Geist',sans-serif] text-[16px] text-[#16181b] tracking-[0.8px] uppercase font-medium">
                       Support & Scale
                     </h3>
@@ -124,7 +124,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
                         <span className="flex-1">Cloud / DevOps</span>
                       </li>
                     </ul>
-                  </div>
+                  </Link>
 
                   {/* Category 4 */}
                   <Link to="/staff-augmentation" className="bg-white p-6 hover:bg-gray-50 transition-colors flex flex-col gap-4 group/card">
@@ -257,7 +257,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
             <div className="flex flex-col bg-gray-50 border-b border-gray-100 divide-y divide-gray-100/50">
               <Link to="/mvp-development" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => setIsMobileMenuOpen(false)}>Product Development</Link>
               <div className="px-8 py-3 text-[13px] font-semibold text-regal-navy">Workflow Digitization</div>
-              <div className="px-8 py-3 text-[13px] font-semibold text-regal-navy">Support & Scale</div>
+              <Link to="/support-and-scale" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => setIsMobileMenuOpen(false)}>Support & Scale</Link>
               <Link to="/staff-augmentation" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => setIsMobileMenuOpen(false)}>Staff Augmentation</Link>
               <div className="px-8 py-3 text-[13px] font-semibold text-regal-navy">AI Consulting & Automation</div>
             </div>

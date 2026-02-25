@@ -127,12 +127,12 @@ const StaffAug: React.FC = () => {
                 <SeparatorPattern />
                 <Testimonials />
                 <FAQChat faqs={[
-                    { question: "How fast can we onboard developers?", answer: "Most teams start in 1–2 weeks. We align on role, stack, time zone overlap, and your sprint cadence, then onboard into your tools and process with clear first-week deliverables." },
-                    { question: "Is this staff augmentation or team extension?", answer: "Both. Whether you need individual engineers to fill gaps or a full pod with a tech lead, we adapt the model to how your team works — not the other way around." },
-                    { question: "Can we try engineers before committing long-term?", answer: "Yes. We offer a paid 2-week trial so you can evaluate quality, velocity, and cultural fit before scaling the engagement." },
-                    { question: "Who manages delivery: us or you?", answer: "Your team stays in control. Our engineers plug into your sprints, tools, and standups. You assign work and set priorities — we deliver." },
-                    { question: "What if an engineer isn't the right fit?", answer: "We replace them quickly with minimal disruption. Fit matters, and we stand behind every engineer we place on your team." },
-                    { question: "How do pricing and engagement models work?", answer: "We offer flexible monthly engagements — full-time, part-time, or pod-based. Pricing depends on role, seniority, and team size. No lock-in contracts." },
+                    { question: "How fast can we onboard developers?", answer: "Most teams start in 1–2 weeks. We align on role, stack, timezone overlap, and your sprint cadence, then onboard into your tools and process with clear first-week deliverables." },
+                    { question: "Is this staff augmentation or team extension?", answer: "Both. You can hire dedicated developers (full/part-time), use team extension (embedded engineers inside your team), or choose a pod model (lead + devs + QA) when you want output ownership." },
+                    { question: "Can we try engineers before committing long-term?", answer: "Yes. We offer a 2-week paid trial so you can validate quality, communication, and velocity before you scale the engagement." },
+                    { question: "Who manages delivery: us or you?", answer: "You can choose. If you have a PM/EM, our engineers plug into your sprints. If you need more ownership, we can provide a tech lead/pod and manage delivery outcomes with weekly reporting." },
+                    { question: "What if an engineer isn't the right fit?", answer: "We replace quickly. If the fit or performance isn't working, we swap with minimal disruption and keep momentum on your roadmap." },
+                    { question: "How do pricing and engagement models work?", answer: "We support part-time or full-time, and you can run it as dedicated individuals, team extension, or a pod. Pricing is straightforward and tied to the engagement type, duration, and seniority mix." },
                 ]} />
                 <BlogInsights />
                 <SeparatorPattern />

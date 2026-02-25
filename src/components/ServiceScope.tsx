@@ -63,7 +63,7 @@ export function ServiceScope({ badge, heading, cards, ctaCards, footerText }: Se
                     {cards.map((svc, idx) => (
                         <div
                             key={idx}
-                            className="bg-regal-navy border-[0.5px] border-white/10 flex flex-col items-start p-6 md:p-8 hover:bg-[#081f47] transition-all duration-300 gap-6 h-[240px] hover:z-10 hover:shadow-[0_0_20px_rgba(122,252,255,0.15)] relative"
+                            className="bg-regal-navy border-[0.5px] border-white/10 flex flex-col items-start p-6 md:p-8 hover:bg-[#081f47] transition-all duration-300 gap-6 min-h-[240px] hover:z-10 hover:shadow-[0_0_20px_rgba(122,252,255,0.15)] relative"
                         >
                             <div className="flex flex-col gap-4 relative z-10">
                                 <div className="bg-white/10 rounded-[8px] p-1.5 w-fit">
@@ -87,15 +87,15 @@ export function ServiceScope({ badge, heading, cards, ctaCards, footerText }: Se
                                 key={idx}
                                 className="bg-white rounded p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative shadow-lg"
                             >
-                                <div className="flex flex-col gap-2 relative z-10">
+                                <div className="flex-1 flex flex-col gap-2 relative z-10">
                                     <h3 className="font-headings font-bold text-lg text-carbon-black leading-[25px]">
                                         {cta.title}
                                     </h3>
-                                    <p className="font-sans font-medium text-sm text-carbon-black/70 leading-[22px] max-w-[280px]">
+                                    <p className="font-sans font-medium text-sm text-carbon-black/70 leading-[22px]">
                                         {cta.description}
                                     </p>
                                 </div>
-                                <Button variant="primary" size="sm" className="whitespace-nowrap z-10 w-full md:w-auto">
+                                <Button variant="primary" size="sm" className="whitespace-nowrap z-10 w-full md:w-auto shrink-0">
                                     {cta.ctaLabel}
                                 </Button>
                             </div>
