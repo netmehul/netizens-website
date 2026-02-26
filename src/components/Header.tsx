@@ -219,12 +219,14 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
         {/* CTA Button and Mobile Toggle */}
         {!isThankYou && (
           <div className="flex items-center gap-4 w-auto md:w-[250px] justify-end">
-            <Button
-              size="sm"
-              className="hidden md:inline-flex text-xs md:text-[14px] px-[18px] py-[10px]"
-            >
-              Book a Discovery Call
-            </Button>
+            <Link to="/book-call">
+              <Button
+                size="sm"
+                className="hidden md:inline-flex text-xs md:text-[14px] px-[18px] py-[10px]"
+              >
+                Book a Discovery Call
+              </Button>
+            </Link>
 
             {/* Mobile Menu Toggle */}
             <button
@@ -278,9 +280,11 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
           </div>
 
           <div className="px-6 py-6 mt-2">
-            <Button size="sm" className="w-full justify-center py-[14px] text-[15px]">
-              Book a Discovery Call
-            </Button>
+            <Link to="/book-call">
+              <Button size="sm" className="w-full justify-center py-[14px] text-[15px]">
+                Book a Discovery Call
+              </Button>
+            </Link>
           </div>
         </div>
       )}

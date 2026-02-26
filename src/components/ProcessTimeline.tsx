@@ -65,9 +65,12 @@ export function ProcessTimeline({ badge, heading, steps, ctaLabel }: ProcessTime
 
             tl.fromTo(
                 progressLineRef.current,
-                { width: "0%" },
                 {
-                    width: "100%",
+                    width: "0%",
+                    left: `${(1 / (steps.length * 2)) * 100}%`,
+                },
+                {
+                    width: `${((steps.length - 1) / steps.length) * 100}%`,
                     duration: totalDuration,
                     ease: "none",
                 }
@@ -115,7 +118,7 @@ export function ProcessTimeline({ badge, heading, steps, ctaLabel }: ProcessTime
                             {badge}
                         </span>
                     </div>
-                    <h2 className="font-headings font-normal text-2xl md:text-[30px] leading-snug text-carbon-black max-w-[800px]">
+                    <h2 className="font-headings font-normal text-2xl md:text-[30px] leading-snug text-carbon-black max-w-[1200px]">
                         {heading}
                     </h2>
                 </div>
@@ -124,33 +127,34 @@ export function ProcessTimeline({ badge, heading, steps, ctaLabel }: ProcessTime
                 <div className="hidden md:flex flex-col w-full gap-0">
                     {/* Timeline track */}
                     <div className="relative w-full">
-                        <div className="flex justify-between items-center relative">
-                            {/* Base gray line */}
-                            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-gray-200" />
-                            {/* Animated navy progress line */}
+                        {/* Base gray line */}
+                        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-gray-200" />
+                        {/* Animated navy progress line */}
+                        <div
+                            ref={progressLineRef}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-regal-navy"
+                            style={{ width: "0%" }}
+                        />
+                        {/* Dashed leader extending from active circle */}
+                        {activeIndex < steps.length - 1 && (
                             <div
-                                ref={progressLineRef}
-                                className="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-regal-navy"
-                                style={{ width: "0%" }}
+                                className="absolute top-1/2 -translate-y-1/2 h-[2px] border-t-2 border-dashed border-regal-navy pointer-events-none"
+                                style={{
+                                    left: `calc(${((activeIndex * 2 + 1) / (steps.length * 2)) * 100}% + 10px)`,
+                                    width: "36px",
+                                }}
                             />
-                            {/* Dashed leader extending from active circle */}
-                            {activeIndex < steps.length - 1 && (
-                                <div
-                                    className="absolute top-1/2 -translate-y-1/2 h-[2px] border-t-2 border-dashed border-regal-navy pointer-events-none"
-                                    style={{
-                                        left: `calc(${(activeIndex / (steps.length - 1)) * 100}% + 10px)`,
-                                        width: "36px",
-                                    }}
-                                />
-                            )}
-
+                        )}
+                        {/* Circles - using same grid as cards so they align */}
+                        <div className="relative z-10 grid" style={{ gridTemplateColumns: `repeat(${steps.length}, 1fr)`, gap: "12px" }}>
                             {steps.map((_, i) => (
-                                <div
-                                    key={i}
-                                    ref={(el) => { circlesRef.current[i] = el; }}
-                                    className="w-[14px] h-[14px] rounded-full border-2 border-gray-300 bg-white cursor-pointer relative z-10"
-                                    onClick={() => setActiveIndex(i)}
-                                />
+                                <div key={i} className="flex justify-center">
+                                    <div
+                                        ref={(el) => { circlesRef.current[i] = el; }}
+                                        className="w-[14px] h-[14px] rounded-full border-2 border-gray-300 bg-white cursor-pointer"
+                                        onClick={() => setActiveIndex(i)}
+                                    />
+                                </div>
                             ))}
                         </div>
                     </div>

@@ -9,6 +9,7 @@ import imgFastLoading from "../assets/images/bento-section-images/fast loading i
 import imgCrmWhatsapp from "../assets/images/bento-section-images/crm-whatsapp.svg";
 import imgMultiLanguage from "../assets/images/bento-section-images/multi language.svg";
 import { Button } from "./ui/Button";
+import { Link } from "react-router-dom";
 import { SidePattern } from "./SidePattern";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -173,9 +174,11 @@ export const WhatYouGet = () => {
 
         {/* Book a Discovery Call Button */}
         <div className="mt-6 sm:mt-12 flex justify-center pb-0 sm:pb-4 w-full inset-x-0">
-          <Button variant="primary" className="shadow-xl px-8 py-3 text-sm">
-            Book a Discovery Call
-          </Button>
+          <Link to="/book-call">
+            <Button variant="primary" className="shadow-xl px-8 py-3 text-sm">
+              Book a Discovery Call
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

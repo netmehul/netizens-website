@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink } from "lucide-react";
 import { SidePattern } from "./SidePattern";
+import imgSeparatorPattern from "../assets/images/pattern.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,7 @@ interface EngagementModelsProps {
     badge: string;
     heading: string;
     cards: EngagementCard[];
+    theme?: "light" | "dark";
 }
 
 const colorMap = {
@@ -25,24 +27,33 @@ const colorMap = {
     cyan: "bg-[#7afcff]",
 } as const;
 
-export function EngagementModels({ badge, heading, cards }: EngagementModelsProps) {
+export function EngagementModels({ badge, heading, cards, theme = "light" }: EngagementModelsProps) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const headerRef = useRef<HTMLDivElement>(null);
     const windowRef = useRef<HTMLDivElement>(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const progressRef = useRef<HTMLDivElement>(null);
+    const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const isDark = theme === "dark";
 
+    // Entry animation (both themes)
     useEffect(() => {
         const section = sectionRef.current;
         const header = headerRef.current;
         const macWindow = windowRef.current;
 
         if (section && header && macWindow) {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 75%",
-                },
-            });
+            const tl = gsap.timeline(
+                isDark
+                    ? {}
+                    : {
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 75%",
+                        },
+                    }
+            );
 
             tl.fromTo(
                 header,
@@ -59,11 +70,11 @@ export function EngagementModels({ badge, heading, cards }: EngagementModelsProp
                 if (card) {
                     tl.fromTo(
                         card,
-                        { y: 30, opacity: 0, rotation: gsap.utils.random(-2, 2) },
+                        { y: 30, opacity: 0, rotation: isDark ? 0 : gsap.utils.random(-2, 2) },
                         {
                             y: 0,
                             opacity: 1,
-                            rotation: gsap.utils.random(-1, 1),
+                            rotation: isDark ? 0 : gsap.utils.random(-1, 1),
                             duration: 0.5,
                             ease: "back.out(1.2)",
                         },
@@ -72,8 +83,172 @@ export function EngagementModels({ badge, heading, cards }: EngagementModelsProp
                 }
             });
         }
-    }, []);
+    }, [isDark]);
 
+    // Dark theme: auto-cycling timeline animation
+    useEffect(() => {
+        if (!isDark) return;
+
+        const totalCards = cards.length;
+        let intervalId: ReturnType<typeof setInterval>;
+
+        const timeoutId = setTimeout(() => {
+            setActiveIndex(0);
+            let current = 0;
+
+            intervalId = setInterval(() => {
+                current = (current + 1) % totalCards;
+                setActiveIndex(current);
+            }, 2500);
+        }, 1000);
+
+        return () => {
+            clearTimeout(timeoutId);
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [isDark, cards.length]);
+
+    // Animate progress bar & dots on activeIndex change
+    useEffect(() => {
+        if (!isDark) return;
+
+        const progressEl = progressRef.current;
+        if (progressEl) {
+            const totalCards = cards.length;
+            // Progress goes from first dot to current dot
+            const pct = totalCards > 1
+                ? (activeIndex / (totalCards - 1)) * 100
+                : 100;
+            gsap.to(progressEl, {
+                width: `${pct}%`,
+                duration: 0.8,
+                ease: "power2.out",
+            });
+        }
+
+        dotsRef.current.forEach((dot, i) => {
+            if (dot) {
+                gsap.to(dot, {
+                    scale: i <= activeIndex ? 1.4 : 1,
+                    duration: 0.4,
+                    ease: "back.out(2)",
+                });
+            }
+        });
+    }, [activeIndex, isDark, cards.length]);
+
+    if (isDark) {
+        return (
+            <section
+                ref={sectionRef}
+                className="relative w-full bg-regal-navy py-8 sm:py-16 md:py-20 flex flex-col items-center justify-center gap-6 sm:gap-12 overflow-hidden px-4"
+            >
+                {/* Pattern background */}
+                <div className="absolute inset-0 pointer-events-none opacity-10">
+                    <div
+                        className="absolute inset-0 w-full h-full mix-blend-screen"
+                        style={{
+                            opacity: 0.5,
+                            backgroundImage: `url(${imgSeparatorPattern})`,
+                            backgroundRepeat: "repeat",
+                            backgroundSize: "1000px",
+                        }}
+                    />
+                    <div
+                        className="absolute inset-0 w-full h-full"
+                        style={{
+                            backgroundImage: "linear-gradient(#ffffff0a 1px, transparent 1px)",
+                            backgroundSize: "100% 32px",
+                        }}
+                    />
+                </div>
+
+                {/* Header */}
+                <div
+                    ref={headerRef}
+                    className="flex flex-col items-center justify-center gap-4 relative max-w-4xl text-center z-10"
+                >
+                    <div className="bg-white/10 border border-white/10 flex items-center justify-center px-[18px] py-[8px] rounded-[4px] shrink-0">
+                        <span className="font-sans text-[12px] text-snow-white text-center">
+                            {badge}
+                        </span>
+                    </div>
+                    <h2 className="font-headings font-normal text-2xl md:text-[30px] leading-snug text-snow-white text-center w-full">
+                        {heading}
+                    </h2>
+                </div>
+
+                {/* Steps with animated connector */}
+                <div ref={windowRef} className="w-full max-w-[1016px] z-10">
+                    {/* Timeline connector */}
+                    <div className="hidden md:flex items-center w-full max-w-[900px] mx-auto mb-4 px-4 relative h-4">
+                        {/* Dashed background line */}
+                        <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 border-t-2 border-dashed border-snow-white/20" />
+
+                        {/* Animated solid progress line */}
+                        <div
+                            ref={progressRef}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 h-[2px] bg-gradient-to-r from-snow-white/80 to-snow-white/60 z-[1] rounded-full"
+                            style={{ width: '0%' }}
+                        />
+
+                        {/* Circle nodes */}
+                        <div className="relative z-[2] flex items-center w-full">
+                            {cards.map((_, index) => (
+                                <div key={index} className="flex items-center flex-1 last:flex-none">
+                                    <div
+                                        ref={(el) => { dotsRef.current[index] = el; }}
+                                        className={`w-3 h-3 rounded-full border-2 shrink-0 transition-all duration-500 cursor-pointer ${index <= activeIndex
+                                            ? 'bg-snow-white border-snow-white shadow-[0_0_10px_rgba(255,255,255,0.5)]'
+                                            : 'bg-transparent border-snow-white/30'
+                                            }`}
+                                        onClick={() => setActiveIndex(index)}
+                                    />
+                                    {index < cards.length - 1 && (
+                                        <div className="flex-1" />
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Cards */}
+                    <div className="w-[calc(100%+2rem)] -ml-4 md:w-full md:ml-0 overflow-x-auto custom-scrollbar pb-6 px-4 md:px-0 md:overflow-visible">
+                        <div className="flex flex-nowrap justify-start md:justify-center gap-4 md:gap-5 w-max md:w-auto pt-2 after:content-[''] after:w-2 after:shrink-0 md:after:hidden">
+                            {cards.map((card, index) => (
+                                <div
+                                    key={index}
+                                    ref={(el) => {
+                                        cardsRef.current[index] = el;
+                                    }}
+                                    className={`backdrop-blur-sm border flex flex-col gap-3 p-5 rounded-[10px] w-[280px] md:w-[300px] min-h-[200px] shrink-0 cursor-pointer transition-all duration-500 ${index === activeIndex
+                                        ? 'bg-[#264980]/90 border-snow-white/25 scale-[1.03] shadow-[0_4px_30px_rgba(255,255,255,0.07)]'
+                                        : 'bg-[#264980]/35 border-snow-white/5 scale-100'
+                                        }`}
+                                    onClick={() => setActiveIndex(index)}
+                                >
+                                    <span className={`font-sans font-bold text-sm transition-colors duration-500 ${index === activeIndex ? 'text-snow-white/80' : 'text-snow-white/25'
+                                        }`}>
+                                        {card.label}
+                                    </span>
+                                    <h3 className={`font-headings font-normal text-lg leading-snug transition-colors duration-500 ${index === activeIndex ? 'text-snow-white' : 'text-snow-white/45'
+                                        }`}>
+                                        {card.title}
+                                    </h3>
+                                    <p className={`font-sans font-medium text-sm leading-relaxed flex-1 transition-colors duration-500 ${index === activeIndex ? 'text-snow-white/75' : 'text-snow-white/30'
+                                        }`}>
+                                        {card.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    // ─── Light theme (original) ───
     return (
         <section
             ref={sectionRef}

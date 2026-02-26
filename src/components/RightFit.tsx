@@ -8,6 +8,8 @@ interface RightFitProps {
     heading: string;
     goodFitItems: string[];
     notFitItems: string[];
+    goodFitTitle?: string;
+    notFitTitle?: string;
 }
 
 function CheckIconDark() {
@@ -104,6 +106,8 @@ export function RightFit({
     heading,
     goodFitItems,
     notFitItems,
+    goodFitTitle = "This is a good fit if",
+    notFitTitle = "This may not be a fit if",
 }: RightFitProps) {
     const s = styles[theme];
 
@@ -151,7 +155,7 @@ export function RightFit({
                             {theme === "dark" ? <CheckIconDark /> : <CheckIconLight />}
                         </div>
                         <h3 className={`font-headings font-normal text-[24px] ${s.goodTitle}`}>
-                            This is a good fit if
+                            {goodFitTitle}
                         </h3>
                         <hr className={`border-t ${s.goodDivider} w-full`} />
                         <ul className="flex flex-col gap-2">
@@ -171,7 +175,7 @@ export function RightFit({
                             {theme === "dark" ? <XIconDark /> : <XIconLight />}
                         </div>
                         <h3 className={`font-headings font-normal text-[24px] ${s.notTitle}`}>
-                            This may not be a fit if
+                            {notFitTitle}
                         </h3>
                         <hr className={`border-t ${s.notDivider} w-full`} />
                         <ul className="flex flex-col gap-2">

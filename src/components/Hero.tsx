@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "./ui/Button";
 
 interface HeroProps {
@@ -37,9 +38,11 @@ export function Hero({
         </p>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2 w-full sm:w-auto">
-          <Button variant="primary" className="w-full sm:w-auto">
-            {primaryCta}
-          </Button>
+          <Link to="/book-call">
+            <Button variant="primary" className="w-full sm:w-auto">
+              {primaryCta}
+            </Button>
+          </Link>
           <Button
             variant="secondary"
             className="w-full sm:w-auto !text-carbon-black !border-[rgba(22,24,27,0.4)] hover:!bg-gray-50 hover:!text-carbon-black"

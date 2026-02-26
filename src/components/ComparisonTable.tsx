@@ -1,6 +1,7 @@
 import { Logo } from "./ui/Logo";
 import { Button } from "./ui/Button";
 import { ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 import pattern from "../assets/images/pattern.png";
 
 import { BadgeCheck, X } from "lucide-react";
@@ -240,12 +241,14 @@ export const ComparisonTable = () => {
                   <div className="col-span-3"></div>
                   {/* Button inside table — visible on sm+ only */}
                   <div className="my-3 hidden sm:flex items-center justify-center relative z-20">
-                    <Button
-                      variant="primary"
-                      className="w-full shadow-xl !text-xs md:!text-base max-w-[95%]"
-                    >
-                      Book a Discovery Call
-                    </Button>
+                    <Link to="/book-call" className="w-full max-w-[95%]">
+                      <Button
+                        variant="primary"
+                        className="w-full shadow-xl !text-xs md:!text-base"
+                      >
+                        Book a Discovery Call
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -254,9 +257,11 @@ export const ComparisonTable = () => {
 
           {/* Button below table — visible on mobile only */}
           <div className="sm:hidden w-full mt-3">
-            <Button variant="primary" className="w-full shadow-xl !text-xs">
-              Book a Discovery Call
-            </Button>
+            <Link to="/book-call">
+              <Button variant="primary" className="w-full shadow-xl !text-xs">
+                Book a Discovery Call
+              </Button>
+            </Link>
           </div>
         </div>
 

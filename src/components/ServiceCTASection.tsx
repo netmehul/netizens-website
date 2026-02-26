@@ -1,4 +1,5 @@
 import { Button } from "./ui/Button";
+import { Link } from "react-router-dom";
 import imgSeparatorPattern from "../assets/images/pattern.png";
 
 interface ServiceCTASectionProps {
@@ -43,9 +44,11 @@ export function ServiceCTASection({
                 </div>
 
                 <div className="flex flex-col gap-4 items-center w-full max-w-[412px]">
-                    <Button variant="secondary" className="w-full sm:w-auto h-auto px-8 py-4 text-[14px] text-regal-navy bg-white hover:bg-white/90">
-                        {ctaLabel}
-                    </Button>
+                    <Link to="/book-call">
+                        <Button variant="secondary" className="w-full sm:w-auto h-auto px-8 py-4 text-[14px] text-regal-navy bg-white hover:bg-white/90">
+                            {ctaLabel}
+                        </Button>
+                    </Link>
                     {subtext && (
                         <p className="font-sans font-normal text-xs text-snow-white/80">
                             {subtext}

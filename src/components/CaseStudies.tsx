@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/Button";
 import { SidePattern } from "./SidePattern";
 
@@ -105,11 +106,10 @@ export const CaseStudies = () => {
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`h-[4px] rounded-[2px] transition-all duration-300 ${
-                    idx === currentIndex
+                  className={`h-[4px] rounded-[2px] transition-all duration-300 ${idx === currentIndex
                       ? "bg-[#0E3572] w-[40px]"
                       : "bg-[rgba(14,53,114,0.3)] w-[4px] hover:bg-[rgba(14,53,114,0.5)]"
-                  }`}
+                    }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
               ))}
@@ -157,12 +157,14 @@ export const CaseStudies = () => {
 
                     <div className="mt-2 text-left">
                       <div className="sm:mt-12 flex justify-center sm:pb-4 w-full inset-x-0">
-                        <Button
-                          variant="primary"
-                          className="shadow-xl px-8 py-3 text-sm"
-                        >
-                          Book a Discovery Call
-                        </Button>
+                        <Link to="/book-call">
+                          <Button
+                            variant="primary"
+                            className="shadow-xl px-8 py-3 text-sm"
+                          >
+                            Book a Discovery Call
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>

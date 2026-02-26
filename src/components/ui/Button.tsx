@@ -49,7 +49,7 @@ export function Button({
   if (variant === "secondary") {
     return (
       <button
-        className={`${baseStyles} bg-transparent text-regal-navy border border-regal-navy hover:bg-regal-navy hover:text-white hover:shadow-lg hover:-translate-y-[2px] active:translate-y-0 transition-all duration-300 ${sizes} ${className}`}
+        className={`${baseStyles} bg-transparent text-regal-navy border border-regal-navy hover:bg-regal-navy hover:text-white hover:-translate-y-[2px] active:translate-y-0 transition-all duration-300 ${sizes} ${className}`}
         {...props}
       >
         <span className="relative z-10 flex items-center gap-2">

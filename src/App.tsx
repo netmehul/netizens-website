@@ -5,6 +5,7 @@ import SupportScale from './pages/support-scale';
 import WorkflowDigit from './pages/workflow-digit';
 import AiAutomate from './pages/ai-automate';
 import HowWeWork from './pages/how-we-work';
+import BookCall from './pages/book-call';
 import Index from './pages/index';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/workflow-digitization" element={<WorkflowDigit />} />
         <Route path="/ai-consulting" element={<AiAutomate />} />
         <Route path="/how-we-work" element={<HowWeWork />} />
+        <Route path="/book-call" element={<BookCall />} />
       </Routes>
     </Router>
   );

@@ -118,9 +118,7 @@ export function WhereToStartSection() {
 
                         {/* CTA Button */}
                         <a
-                            href="https://calendly.com/netizens"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="/book-call"
                             className="btn-primary w-full flex items-center justify-center py-[18px] px-[18px] text-sm font-sans font-normal text-[#FFFAFA] leading-normal no-underline"
                         >
                             Book a Discovery Call
