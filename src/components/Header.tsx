@@ -206,7 +206,7 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
               )}
             </div>
 
-            <div className={navLinkClass}>How We Work</div>
+            <Link to="/how-we-work" className={navLinkClass}>How We Work</Link>
             <div className={navLinkClass}>Case Studies</div>
             <div className={navLinkClass}>Insights</div>
             <div className={navLinkClass}>
@@ -263,9 +263,9 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
             </div>
           )}
 
-          <div className="flex items-center w-full py-4 px-6 font-medium text-[13px] text-[#58595b] uppercase hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-100">
+          <Link to="/how-we-work" className="flex items-center w-full py-4 px-6 font-medium text-[13px] text-[#58595b] uppercase hover:bg-gray-50 transition-colors border-b border-gray-100" onClick={() => setIsMobileMenuOpen(false)}>
             How We Work
-          </div>
+          </Link>
           <div className="flex items-center w-full py-4 px-6 font-medium text-[13px] text-[#58595b] uppercase hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-100">
             Case Studies
           </div>

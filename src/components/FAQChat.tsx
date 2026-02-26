@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import imgSeparatorPattern from '../assets/images/pattern.png';
 import favIcon from '../assets/favicon/fav.png';
+import { SidePattern } from './SidePattern';
 
 export interface FAQItem {
     question: string;
@@ -9,6 +10,7 @@ export interface FAQItem {
 
 interface FAQChatProps {
     faqs: FAQItem[];
+    theme?: 'dark' | 'light';
 }
 
 // Agent avatar using real favicon
@@ -139,40 +141,45 @@ function FAQItemRow({ faq, index, isActive, onToggle }: {
     );
 }
 
-export const FAQChat = ({ faqs }: FAQChatProps) => {
+export const FAQChat = ({ faqs, theme = 'dark' }: FAQChatProps) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const isLight = theme === 'light';
 
     const handleToggle = (i: number) => {
         setActiveIndex(prev => (prev === i ? -1 : i));
     };
 
     return (
-        <section className="relative w-full bg-regal-navy flex flex-col items-center py-16 lg:py-20 overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none opacity-10">
-                <div
-                    className="absolute inset-0 w-full h-full mix-blend-screen"
-                    style={{
-                        opacity: 0.5,
-                        backgroundImage: `url(${imgSeparatorPattern})`,
-                        backgroundRepeat: 'repeat',
-                        backgroundSize: '1000px',
-                    }}
-                />
-                <div
-                    className="absolute inset-0 w-full h-full"
-                    style={{
-                        backgroundImage: 'linear-gradient(#ffffff0a 1px, transparent 1px)',
-                        backgroundSize: '100% 32px',
-                    }}
-                />
-            </div>
+        <section className={`relative w-full flex flex-col items-center py-16 lg:py-20 overflow-hidden ${isLight ? 'bg-[#FFFAFA]' : 'bg-regal-navy'}`}>
+            {isLight && <SidePattern invert />}
+
+            {!isLight && (
+                <div className="absolute inset-0 pointer-events-none opacity-10">
+                    <div
+                        className="absolute inset-0 w-full h-full mix-blend-screen"
+                        style={{
+                            opacity: 0.5,
+                            backgroundImage: `url(${imgSeparatorPattern})`,
+                            backgroundRepeat: 'repeat',
+                            backgroundSize: '1000px',
+                        }}
+                    />
+                    <div
+                        className="absolute inset-0 w-full h-full"
+                        style={{
+                            backgroundImage: 'linear-gradient(#ffffff0a 1px, transparent 1px)',
+                            backgroundSize: '100% 32px',
+                        }}
+                    />
+                </div>
+            )}
 
             <div className="relative z-10 w-full max-w-[1096px] mx-auto px-4 lg:px-0 flex flex-col gap-8 items-center">
                 <div className="flex flex-col items-center gap-2 text-center">
-                    <div className="inline-flex items-center justify-center px-[18px] py-2 rounded-[4px] border border-white/10 bg-white/10">
-                        <span className="font-sans text-[12px] text-snow-white">What People Ask</span>
+                    <div className={`inline-flex items-center justify-center px-[18px] py-2 rounded-[4px] border ${isLight ? 'border-regal-navy/10 bg-regal-navy/5' : 'border-white/10 bg-white/10'}`}>
+                        <span className={`font-sans text-[12px] ${isLight ? 'text-regal-navy' : 'text-snow-white'}`}>What People Ask</span>
                     </div>
-                    <h2 className="font-headings font-normal text-[24px] lg:text-[30px] text-snow-white leading-normal">
+                    <h2 className={`font-headings font-normal text-[24px] lg:text-[30px] leading-normal ${isLight ? 'text-carbon-black' : 'text-snow-white'}`}>
                         Questions? We've got answers
                     </h2>
                 </div>
