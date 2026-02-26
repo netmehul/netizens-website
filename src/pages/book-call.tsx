@@ -101,9 +101,9 @@ const BookCall: React.FC = () => {
                 ]} theme='light' />
                 <SeparatorPattern />
                 <ServiceCTASection
-                    heading={<>Build, launch, and <br className="hidden sm:block" /> validate your MVP.</>}
-                    description="We help you ship an MVP that users can actually use, test, and pay for."
-                    subtext="Bring the idea. We'll help shape the execution."
+                    heading={<>Book a discovery call <br className="hidden sm:block" /> and leave with clarity.</>}
+                    description={<>A 30–45 minute call to understand your goals and recommend the next best step. <br className="hidden sm:block" /> No pressure, no hard sell, just a clear plan.</>}
+                    subtext="We reply within 24 business hours."
                 />
 
 
@@ -114,3 +114,4 @@ const BookCall: React.FC = () => {
 };
 
 export default BookCall;
+
