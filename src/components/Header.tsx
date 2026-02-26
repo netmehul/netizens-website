@@ -8,6 +8,7 @@ import bulletIcon from "../assets/bullet-icons/bullet-icon.svg";
 export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesMegaMenuOpen, setIsServicesMegaMenuOpen] = useState(false);
+  const [isCompanyMenuOpen, setIsCompanyMenuOpen] = useState(false);
 
   // Reusable nav link classes
   const navLinkClass =
@@ -209,9 +210,44 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
             <Link to="/how-we-work" className={navLinkClass}>How We Work</Link>
             <div className={navLinkClass}>Case Studies</div>
             <div className={navLinkClass}>Insights</div>
-            <div className={navLinkClass}>
-              Company
-              <ChevronDown size={18} />
+            <div className="relative">
+              <button
+                className={navLinkClass}
+                onClick={() => setIsCompanyMenuOpen(!isCompanyMenuOpen)}
+                onBlur={() => setTimeout(() => setIsCompanyMenuOpen(false), 200)}
+              >
+                Company
+                <ChevronDown
+                  size={18}
+                  className={`transition-transform duration-200 ${isCompanyMenuOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {isCompanyMenuOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-0 min-w-[180px] bg-white border border-[rgba(14,53,114,0.15)] shadow-lg rounded-lg overflow-hidden py-2 z-50">
+                  <Link
+                    to="/about-us"
+                    className="block px-4 py-2.5 text-[13px] font-medium text-[#58595b] uppercase hover:bg-gray-50 hover:text-regal-navy transition-colors"
+                    onClick={() => setIsCompanyMenuOpen(false)}
+                  >
+                    About Us
+                  </Link>
+                  <Link
+                    to="/careers"
+                    className="block px-4 py-2.5 text-[13px] font-medium text-[#58595b] uppercase hover:bg-gray-50 hover:text-regal-navy transition-colors"
+                    onClick={() => setIsCompanyMenuOpen(false)}
+                  >
+                    Careers
+                  </Link>
+                  <Link
+                    to="/partners"
+                    className="block px-4 py-2.5 text-[13px] font-medium text-[#58595b] uppercase hover:bg-gray-50 hover:text-regal-navy transition-colors"
+                    onClick={() => setIsCompanyMenuOpen(false)}
+                  >
+                    Partners
+                  </Link>
+                </div>
+              )}
             </div>
           </nav>
         )}
@@ -274,10 +310,24 @@ export function Header({ isThankYou = false }: { isThankYou?: boolean }) {
           <div className="flex items-center w-full py-4 px-6 font-medium text-[13px] text-[#58595b] uppercase hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-100">
             Insights
           </div>
-          <div className="flex items-center justify-between w-full py-4 px-6 font-medium text-[13px] text-[#58595b] uppercase hover:bg-gray-50 cursor-pointer transition-colors border-b border-gray-100">
+          <button
+            className="flex items-center justify-between w-full py-4 px-6 font-medium text-[13px] text-[#58595b] uppercase hover:bg-gray-50 transition-colors border-b border-gray-100"
+            onClick={() => setIsCompanyMenuOpen(!isCompanyMenuOpen)}
+          >
             Company
-            <ChevronDown size={18} />
-          </div>
+            <ChevronDown
+              size={18}
+              className={`transition-transform duration-200 ${isCompanyMenuOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          {isCompanyMenuOpen && (
+            <div className="flex flex-col bg-gray-50 border-b border-gray-100 divide-y divide-gray-100/50">
+              <Link to="/about-us" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => { setIsMobileMenuOpen(false); setIsCompanyMenuOpen(false); }}>About Us</Link>
+              <Link to="/careers" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => { setIsMobileMenuOpen(false); setIsCompanyMenuOpen(false); }}>Careers</Link>
+              <Link to="/partners" className="block px-8 py-3 text-[13px] font-semibold text-regal-navy" onClick={() => { setIsMobileMenuOpen(false); setIsCompanyMenuOpen(false); }}>Partners</Link>
+            </div>
+          )}
 
           <div className="px-6 py-6 mt-2">
             <Link to="/book-call">

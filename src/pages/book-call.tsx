@@ -10,6 +10,7 @@ import { ServiceCTASection } from '../components/ServiceCTASection';
 import { Testimonials } from '../components/Testimonials';
 import { RightFit } from '../components/RightFit';
 import { FAQChat } from '../components/FAQChat';
+import { AnimateOnLoad, AnimateOnScroll } from '../components/AnimateOnScroll';
 
 const BookCall: React.FC = () => {
     useEffect(() => {
@@ -31,12 +32,16 @@ const BookCall: React.FC = () => {
                 className="pt-[96px] max-w-7xl mx-auto px-4"
             />
             <main>
-                {/* Hero Section */}
-                <BookCallHero />
+                <AnimateOnLoad variant="hero">
+                    <BookCallHero />
+                </AnimateOnLoad>
                 <SeparatorPattern />
-                <WhatWeCovers />
+                <AnimateOnScroll variant="slideLeft">
+                    <WhatWeCovers />
+                </AnimateOnScroll>
                 <SeparatorPattern />
 
+                <AnimateOnScroll variant="slideRight">
                 <RightFit
                     theme="light"
                     badge="Before You Book"
@@ -56,7 +61,9 @@ const BookCall: React.FC = () => {
                         "Very early idea-stage discussions without defined goals or direction",
                     ]}
                 />
+                </AnimateOnScroll>
                 <SeparatorPattern />
+                <AnimateOnScroll variant="scaleIn">
                 <EngagementModels
                     theme="dark"
                     badge="Our Engagement Model"
@@ -85,9 +92,13 @@ const BookCall: React.FC = () => {
                         },
                     ]}
                 />
+                </AnimateOnScroll>
                 <SeparatorPattern />
+                <AnimateOnScroll variant="slideUpBounce">
                 <Testimonials />
+                </AnimateOnScroll>
 
+                <AnimateOnScroll variant="revealLeft">
                 <FAQChat faqs={[
                     { question: "Is the discovery call free?", answer: "Yes. The discovery call is completely free. It’s a focused conversation to understand your project and explore whether we’re the right fit to work together." },
                     { question: "What happens in a discovery call?", answer: "We discuss your current situation, business goals, technical requirements, and constraints. By the end of the call, you’ll have clarity on possible approaches and next steps." },
@@ -99,14 +110,15 @@ const BookCall: React.FC = () => {
                         question: "What happens after the call?", answer: "After reviewing your requirements internally, we’ll share a proposal, sprint recommendation, or next-step plan tailored to your goals and timeline."
                     },
                 ]} theme='light' />
+                </AnimateOnScroll>
                 <SeparatorPattern />
+                <AnimateOnScroll variant="revealRight">
                 <ServiceCTASection
                     heading={<>Build, launch, and <br className="hidden sm:block" /> validate your MVP.</>}
-                    description="We help you ship an MVP that users can actually use, test, and pay for."
-                    subtext="Bring the idea. We'll help shape the execution."
+                    description={<>A 30–45 minute call to understand your goals and recommend<br className="hidden sm:block" /> the next best step. No pressure, no hard sell, just a clear plan. </>}
+                    subtext="We reply within 24 business hours."
                 />
-
-
+                </AnimateOnScroll>
             </main>
             <Footer />
         </div>

@@ -16,6 +16,7 @@ export default {
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
         headings: ['Sora', 'sans-serif'],
         serif: ['"Playfair Display"', 'serif'],
+        mono: ['"Geist Mono"', 'monospace'],
       },
       animation: {
         marquee: 'marquee 25s linear infinite',

@@ -4,7 +4,7 @@ import imgSeparatorPattern from "../assets/images/pattern.png";
 
 interface ServiceCTASectionProps {
     heading: React.ReactNode;
-    description: string;
+    description: React.ReactNode;
     ctaLabel?: string;
     subtext?: string;
 }
