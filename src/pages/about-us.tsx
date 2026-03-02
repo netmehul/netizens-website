@@ -4,6 +4,7 @@ import { Footer } from '../components/Footer';
 import { Breadcrumb } from '../components/ui/Breadcrumb';
 import { AboutHero } from '../components/AboutHero';
 import { NetizensByNumbers } from '../components/NetizensByNumbers';
+import { OurJourneyTimeline } from '../components/OurJourneyTimeline';
 import { WhatDefinesUs } from '../components/WhatDefinesUs';
 import { EngineeringCultureSection } from '../components/EngineeringCultureSection';
 import { HowWeThinkPartnerships } from '../components/HowWeThinkPartnerships';
@@ -38,7 +39,9 @@ const AboutUs: React.FC = () => {
                 />
                 <SeparatorPattern />
                 <NetizensByNumbers />
-                
+                <SeparatorPattern />
+                <OurJourneyTimeline />
+                <SeparatorPattern />
                 <WhatDefinesUs />
                 <SeparatorPattern />
                 <EngineeringCultureSection />
@@ -48,7 +51,7 @@ const AboutUs: React.FC = () => {
                 <JoinTheTeamSection />
                 <SeparatorPattern />
                 <ServiceCTASection
-                
+
                     heading={<>Looking for a long-term<br className="hidden sm:block" />  engineering partner?</>}
                     description="Let’s build something structured, scalable, and sustainable."
                     ctaLabel="Book a Discovery Call"

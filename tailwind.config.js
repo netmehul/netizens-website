@@ -18,6 +18,12 @@ export default {
         serif: ['"Playfair Display"', 'serif'],
         mono: ['"Geist Mono"', 'monospace'],
       },
+      gridTemplateColumns: {
+        '14': 'repeat(14, minmax(0, 1fr))',
+      },
+      gridTemplateRows: {
+        '7': 'repeat(7, minmax(0, 1fr))',
+      },
       animation: {
         marquee: 'marquee 25s linear infinite',
         'fade-in-down': 'fadeInDown 0.4s ease-out forwards',

@@ -18,6 +18,7 @@ import { BuildToLaunch } from '../components/BuildToLaunch';
 import { BlogInsights } from '../components/BlogInsights';
 import { RightFit } from '../components/RightFit';
 import { Testimonials } from '../components/Testimonials';
+import { TechStack } from '../components/TechStack';
 import { FAQChat } from '../components/FAQChat';
 import heroImg from '../assets/images/product-developement.svg';
 
@@ -91,6 +92,8 @@ const MvpDev: React.FC = () => {
                 />
                 <SeparatorPattern />
                 <Testimonials />
+                <TechStack />
+                <SeparatorPattern />
                 <FAQChat faqs={[
                     { question: "Do you work with early-stage startups?", answer: "Yes. We work with early-stage founders, bootstrapped teams, and funded startups. What matters most is having a real problem to solve and a clear goal for the MVP." },
                     { question: "Can we start small before committing long-term?", answer: "Absolutely. Many clients start with a short discovery sprint, prototype, or focused MVP build before moving into longer-term development." },
